@@ -1,0 +1,37 @@
+[tool.black]
+line-length = 88
+target-version = ["py313"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+# Enable rule categories for Pythonic/PEP compliance
+[tool.ruff.lint]
+select = [
+  "E",   # pycodestyle errors (PEP 8 style)
+  "F",   # pyflakes (logical errors)
+  "I",   # isort (import ordering)
+  "D",   # pydocstyle (PEP 257 docstrings)
+  "ANN", # flake8-annotations (type hints for Pythonic code)
+  "B",   # flake8-bugbear (bug patterns)
+  "UP",  # pyupgrade (modernize code for newer Python versions)
+]
+# Ignore specific rules if they're too strict
+ignore = ["D417"]
+# Exclude common non-code directories
+exclude = [
+  ".git",
+  ".venv",
+  "__pycache__",
+  "*.pyc",
+]
+
+# Per-file ignores for special cases
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]  # Allow unused imports in init files
+"tests/*.py" = ["ANN"]    # Skip type annotations in tests
+
+# Enforce a docstring convention
+[tool.ruff.lint.pydocstyle]
+convention = "google"
